@@ -1,0 +1,36 @@
+[user]
+	name = ***REMOVED***
+	email = ***REMOVED***
+[branch]
+	autosetuprebase = always
+[push]
+	default = upstream
+[***REMOVED***]
+	append-cr-url = true
+	pull-request-by-default = true
+[credential]
+	helper = cache --timeout=300
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	lgp = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
+	standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday --author ***REMOVED***
+	sprint = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --author ***REMOVED*** --since='2 weeks ago'
+	week-sum = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --author ***REMOVED*** --since='1 week ago'
+	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+	git-amend = commit --amend -C HEAD
+	***REMOVED*** = commit -m 'fixup! ***REMOVED***'
+	autosquash = rebase -i --autosquash
+	st = status -bs
+	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+[color]
+	ui = 1
+[help]
+	autocorrect = 1
+[rerere]
+	enabled = 1
+[diff]
+	renamelimit = 1479
+[core]
+	editor = emacs -nw
+	pager = less -FMRiX
+	
