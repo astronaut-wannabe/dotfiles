@@ -57,3 +57,9 @@
 
 ;; spaces, not tabs
 (setq-default indent-tabs-mode nil)
+
+;; turn on css mode for sass
+(setq auto-mode-alist
+      (append '(("\\.scss$" . css-mode))
+              auto-mode-alist))
+(setq css-indent-offset 2)
