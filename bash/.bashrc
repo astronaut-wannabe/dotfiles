@@ -4,7 +4,8 @@ export PATH=$GRADLE_HOME/bin/:$PATH
 export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle/
 
-source /home/local/ANT/***REMOVED***/workspace/src/ATVAndroidDevTools/scripts/git-completion.bash
+
+source ~/.git-completion.bash
 export PS1='\e[0;32m\h:\u \e[0;33m\w \e[0;36m$(__git_ps1 "(%s)") \e[0m\n$ '
 alias logcat='adb logcat'
 alias emacs='emacs -nw'
