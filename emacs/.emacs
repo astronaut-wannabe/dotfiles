@@ -1,4 +1,25 @@
+;; In case this is the first time running this on a computer, we need to make sure the following directories have been created.
+(defconst mb/emacs-directory (concat (getenv "HOME") "/.emacs.d/"))
+(defun mb/emacs-subdirectory (d) (expand-file-name d mb/emacs-directory))
+
+(let* ((subdirs '("elisp" "backups" "snippets" "ac-dict"))
+       (fulldirs (mapcar (lambda (d) (mb/emacs-subdirectory d)) subdirs)))
+  (dolist (dir fulldirs)
+    (when (not (file-exists-p dir))
+      (message "Make directory: %s" dir)
+      (make-directory dir))))
+
+;; Extra packages not available via the package manager go here
+(add-to-list 'load-path (mb/emacs-subdirectory "elisp"))
+
 ;; default to better frame titles
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq frame-title-format
       (concat  "%b - emacs@" (system-name)))
 
@@ -63,3 +84,8 @@
       (append '(("\\.scss$" . css-mode))
               auto-mode-alist))
 (setq css-indent-offset 2)
+
+;; aspell/ispell setup
+(setq ispell-dictionary "american")
+(setq ispell-program-name "/usr/local/bin/aspell")
+(setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
