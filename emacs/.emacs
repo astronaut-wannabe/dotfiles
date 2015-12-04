@@ -83,6 +83,8 @@
 
 ;; spaces, not tabs
 (setq-default indent-tabs-mode nil)
+(setq tab-width 2)
+(setq-default tab-always-indent 'complete)
 
 ;; turn on css mode for sass
 (setq auto-mode-alist
@@ -94,3 +96,12 @@
 (setq ispell-dictionary "american")
 (setq ispell-program-name "/usr/local/bin/aspell")
 (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
+
+;; Some visual tweaks
+(setq initial-scratch-message "")
+
+(when (window-system)
+  ;; (tool-bar-mode 0) uncomment if I get sick of toolbar
+  (when (fboundp 'horizontal-scroll-bar-mode)
+    (horizontal-scroll-bar-mode -1))
+  (scroll-bar-mode -1))
