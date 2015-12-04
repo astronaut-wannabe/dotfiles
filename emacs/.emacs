@@ -115,7 +115,7 @@
   (scroll-bar-mode -1))
 
 (require 'spaceline-config)
-(spaceline-spacemacs-theme)
+(spaceline-emacs-theme)
 
 ;; Programming Languages...
 
