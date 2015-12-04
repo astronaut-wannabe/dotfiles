@@ -62,7 +62,9 @@
 (setq inferior-lisp-program "/usr/bin/clisp")
 
 ;; save all auto-backups in a single directory
-(setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs-backups"))))
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (mb/emacs-subdirectory "backups")))))
 
 (global-set-key "\M-?" 'help-command)
 
