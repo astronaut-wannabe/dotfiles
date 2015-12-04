@@ -1,3 +1,6 @@
+;; get rid of welcome message
+(setq inhibit-startup-message t)
+
 ;; In case this is the first time running this on a computer, we need to make sure the following directories have been created.
 (defconst mb/emacs-directory (concat (getenv "HOME") "/.emacs.d/"))
 (defun mb/emacs-subdirectory (d) (expand-file-name d mb/emacs-directory))
@@ -14,10 +17,11 @@
 
 ;; set up the package manager repos
 (require 'package)
-(setq package-archives '(("org"       . "http://orgmode.org/elpa/")
-                         ("gnu"       . "http://elpa.gnu.org/packages/")
-                         ("melpa"     . "http://melpa.milkbox.net/packages/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")))
+(setq package-archives '(;;("org"       . "https://orgmode.org/elpa/") org is slow
+                         ("gnu"       . "https://elpa.gnu.org/packages/")
+                         ("melpa"     . "https://melpa.org/packages/")
+                         ;;("marmalade" . "https://marmalade-repo.org/packages/") marmalade's https cert is weird...
+                         ))
 
 ;; This must come before configurations installed packages.
 (package-initialize)
