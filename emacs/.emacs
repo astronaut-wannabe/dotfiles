@@ -12,14 +12,18 @@
 ;; Extra packages not available via the package manager go here
 (add-to-list 'load-path (mb/emacs-subdirectory "elisp"))
 
-;; default to better frame titles
+;; set up the package manager repos
+(require 'package)
+(setq package-archives '(("org"       . "http://orgmode.org/elpa/")
+                         ("gnu"       . "http://elpa.gnu.org/packages/")
+                         ("melpa"     . "http://melpa.milkbox.net/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")))
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;; This must come before configurations installed packages.
 (package-initialize)
+(package-refresh-contents)
 
+;; default to better frame titles
 (setq frame-title-format
       (concat  "%b - emacs@" (system-name)))
 
@@ -45,11 +49,6 @@
 
 ;; save all auto-backups in a single directory
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs-backups"))))
-
-;; add additional package repositories (gnu is the only one that comes built in)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (global-set-key "\M-?" 'help-command)
 
