@@ -50,7 +50,8 @@
  '(custom-enabled-themes (quote (deeper-blue)))
  '(package-selected-packages
    (quote
-    (spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit))))
+    (rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
+ '(projectile-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -59,7 +60,9 @@
  )
 
 ;; set lisp to use with slime
-(setq inferior-lisp-program "/usr/bin/clisp")
+  (load (expand-file-name "~/quicklisp/slime-helper.el"))
+  ;; Replace "sbcl" with the path to your implementation
+(setq inferior-lisp-program "sbcl")
 
 ;; save all auto-backups in a single directory
 (setq backup-directory-alist
