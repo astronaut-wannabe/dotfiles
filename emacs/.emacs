@@ -129,3 +129,6 @@
   (message "Missing modules file %s" "init-ruby.el")
   (message "You can get started by copying the bundled example file"))
 (require 'init-ruby)
+
+(add-hook 'after-init-hook 'global-company-mode)
+(company-quickhelp-mode 1)
