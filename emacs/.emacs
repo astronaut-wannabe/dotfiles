@@ -50,7 +50,7 @@
  '(custom-enabled-themes (quote (deeper-blue)))
  '(package-selected-packages
    (quote
-    (rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
+    (yasnippet rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
  '(projectile-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -62,7 +62,7 @@
 ;; set lisp to use with slime
   (load (expand-file-name "~/quicklisp/slime-helper.el"))
   ;; Replace "sbcl" with the path to your implementation
-(setq inferior-lisp-program "sbcl")
+(setq inferior-lisp-program "/usr/local/bin/sbcl")
 
 ;; save all auto-backups in a single directory
 (setq backup-directory-alist
@@ -132,3 +132,11 @@
 
 (add-hook 'after-init-hook 'global-company-mode)
 (company-quickhelp-mode 1)
+
+;; set up yasnippets
+(use-package rvm
+  :ensure t
+  :pin melpa)
+(require 'yasnippet)
+(yas-global-mode 1)
+(add-to-list 'yas-snippet-dirs (mb/emacs-subdirectory "snippets"))

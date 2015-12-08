@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: rspec-testcase-context
+# key: rtc
+# --
+context "${the context for the test}" do
+  rti$0
+end

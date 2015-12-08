@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: rspec-testcase
+# key: rtf
+# --
+describe "${test description}" do
+  rtc$0
+end

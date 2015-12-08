@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: rspec-testcase-it
+# key: rti
+# --
+it "${what does this test do}" do
+  ${}
+end
