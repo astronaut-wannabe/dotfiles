@@ -99,7 +99,7 @@
 (setq initial-scratch-message "")
 
 (when (window-system)
-  ;; (tool-bar-mode 0) uncomment if I get sick of toolbar
+  (tool-bar-mode 0)
   (when (fboundp 'horizontal-scroll-bar-mode)
     (horizontal-scroll-bar-mode -1))
   (scroll-bar-mode -1))
