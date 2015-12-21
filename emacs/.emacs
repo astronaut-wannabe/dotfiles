@@ -60,8 +60,8 @@
  )
 
 ;; set lisp to use with slime
-  (load (expand-file-name "~/quicklisp/slime-helper.el"))
-  ;; Replace "sbcl" with the path to your implementation
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+;; Replace "sbcl" with the path to your implementation
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 
 ;; save all auto-backups in a single directory
