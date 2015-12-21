@@ -79,21 +79,6 @@
   (other-window (- (prefix-numeric-value n))))
 (global-set-key "\C-x\C-p" 'other-window-backward)
 
-;; add single line scrolling
-(defalias 'scroll-ahead 'scroll-up)
-(defalias 'scroll-behind 'scroll-down)
-(defun scroll-n-lines-ahead (&optional n)
-  "Scroll ahead N lines (1 by default)."
-  (interactive "P")
-  (scroll-ahead (prefix-numeric-value n)))
-(defun scroll-n-lines-behind (&optional n)
-  "Scroll ahead N lines (1 by default)."
-  (interactive "P")
-  (scroll-behind (prefix-numeric-value n)))
-(global-set-key "\C-q" 'scroll-n-lines-behind)
-(global-set-key "\C-z" 'scroll-n-lines-ahead)
-(global-set-key "\C-x\C-q" 'quoted-insert)
-
 ;; spaces, not tabs
 (setq-default indent-tabs-mode nil)
 (setq tab-width 2)
