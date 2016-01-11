@@ -48,9 +48,13 @@
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (deeper-blue)))
+ '(custom-safe-themes
+   (quote
+    ("3b0a350918ee819dca209cec62d867678d7dac74f6195f5e3799aa206358a983" default)))
+ '(magit-pull-arguments (quote ("--rebase")))
  '(package-selected-packages
    (quote
-    (yasnippet rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
+    (expand-region mustache-mode restclient ace-window elm-mode flycheck-elm railscasts-theme flx-ido ag coffee-mode yasnippet rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
  '(projectile-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
