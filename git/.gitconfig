@@ -18,7 +18,6 @@
 	week-sum = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --author ***REMOVED*** --since='1 week ago'
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
 	git-amend = commit --amend -C HEAD
-	***REMOVED*** = commit -m 'fixup! ***REMOVED***'
 	autosquash = rebase -i --autosquash
 	st = status -bs
 	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
