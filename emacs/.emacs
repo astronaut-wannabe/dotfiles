@@ -140,3 +140,23 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 (add-to-list 'yas-snippet-dirs (mb/emacs-subdirectory "snippets"))
+
+;; set up ag (grep replacement)
+(use-package ag
+  :init      (setq ag-highlight-search t))
+;;  :config    (add-to-list 'ag-arguments "--word-regexp"))
+
+(setenv "PATH" "/Users/***REMOVED***/Library/Android/sdk/platform-tools/:node_modules/.bin:/Users/***REMOVED***/.nvm/versions/node/v4.2.2/bin:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin")
+(setq exec-path (split-string "/Users/***REMOVED***/Library/Android/sdk/platform-tools/:node_modules/.bin:/Users/***REMOVED***/.nvm/versions/node/v4.2.2/bin:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" path-separator))
+
+(use-package ace-window
+  :ensure t
+  :init
+    (setq aw-keys '(?a ?s ?d ?f ?j ?k ?l ?o))
+    (global-set-key (kbd "C-x o") 'ace-window)
+  :diminish ace-window-mode)
+
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+(setq paradox-github-token "06d54f23fdfcda346251c9fb692a9881d1f77586")
