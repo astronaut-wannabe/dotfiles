@@ -47,21 +47,25 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-enabled-themes (quote (deeper-blue)))
+ '(coffee-tab-width 2)
+ '(custom-enabled-themes (quote (railscasts)))
  '(custom-safe-themes
    (quote
     ("3b0a350918ee819dca209cec62d867678d7dac74f6195f5e3799aa206358a983" default)))
+ '(js-indent-level 2)
  '(magit-pull-arguments (quote ("--rebase")))
  '(package-selected-packages
    (quote
-    (expand-region mustache-mode restclient ace-window elm-mode flycheck-elm railscasts-theme flx-ido ag coffee-mode yasnippet rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
- '(projectile-global-mode t))
+    (projectile-rails evil coffee-mode csv-mode rubocop flycheck thingatpt+ paper-theme paradox expand-region mustache-mode restclient ace-window elm-mode flycheck-elm railscasts-theme flx-ido ag yasnippet rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
+ '(paradox-automatically-star t)
+ '(projectile-global-mode t)
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:inherit nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 180 :width normal :foundry "nil" :family "Hack")))))
 
 ;; set lisp to use with slime
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
