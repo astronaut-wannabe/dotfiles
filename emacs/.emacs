@@ -122,6 +122,13 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (company-quickhelp-mode 1)
 
+;; set up coffeescript mode
+(use-package coffee-mode
+  :ensure t
+  :pin melpa
+  :config (custom-set-variables '(coffee-tab-width 2))
+  )
+
 ;; set up yasnippets
 (use-package rvm
   :ensure t
