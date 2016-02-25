@@ -51,11 +51,12 @@
  '(custom-safe-themes
    (quote
     ("3b0a350918ee819dca209cec62d867678d7dac74f6195f5e3799aa206358a983" default)))
+ '(global-auto-revert-mode t)
  '(js-indent-level 2)
  '(magit-pull-arguments (quote ("--rebase")))
  '(package-selected-packages
    (quote
-    (projectile-rails evil coffee-mode csv-mode rubocop flycheck thingatpt+ paper-theme paradox expand-region mustache-mode restclient ace-window elm-mode flycheck-elm railscasts-theme flx-ido ag yasnippet rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
+    (evil-leader butler highlight-blocks projectile-rails evil coffee-mode csv-mode rubocop flycheck thingatpt+ paper-theme paradox expand-region mustache-mode restclient ace-window elm-mode flycheck-elm railscasts-theme flx-ido ag yasnippet rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
  '(paradox-automatically-star t)
  '(projectile-global-mode t)
  '(tool-bar-mode nil))
