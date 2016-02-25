@@ -159,3 +159,11 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 (setq paradox-github-token "06d54f23fdfcda346251c9fb692a9881d1f77586")
+
+(global-set-key (kbd "C-`") 'evil-mode)
+(global-evil-leader-mode)
+(evil-leader/set-leader ",")
+(evil-leader/set-key-for-mode 'ruby-mode
+                              "v" 'rspec-verify
+                              "a" 'rspec-verify-all
+                              "f" 'rspec-run-last-failed)
