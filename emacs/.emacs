@@ -17,11 +17,10 @@
 
 ;; set up the package manager repos
 (require 'package)
-(setq package-archives '(;;("org"       . "https://orgmode.org/elpa/") org is slow
-                         ("gnu"       . "https://elpa.gnu.org/packages/")
-                         ("melpa"     . "https://melpa.org/packages/")
-                         ;;("marmalade" . "https://marmalade-repo.org/packages/") marmalade's https cert is weird...
-                         ))
+(setq package-archives '(("gnu"       . "https://elpa.gnu.org/packages/")
+                         ("melpa"     . "https://melpa.org/packages/")))
+;; (add-to-list 'package-archives '("org"       . "http://orgmode.org/elpa/")             t)
+;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 ;; This must come before configurations installed packages.
 (package-initialize)
