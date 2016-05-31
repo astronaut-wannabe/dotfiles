@@ -56,7 +56,7 @@
  '(magit-pull-arguments (quote ("--rebase")))
  '(package-selected-packages
    (quote
-    (evil-leader butler highlight-blocks projectile-rails evil coffee-mode csv-mode rubocop flycheck thingatpt+ paper-theme paradox expand-region mustache-mode restclient ace-window elm-mode flycheck-elm railscasts-theme flx-ido ag yasnippet rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
+    (rust-mode zone-sl writegood-mode writeroom-mode yaml-mode sourcemap coffee-mode flymake-coffee haml-mode pdf-tools paradox ace-jump-mode rainbow-blocks rainbow-delimiters zone-rainbow evil-leader highlight-blocks projectile-rails evil csv-mode rubocop flycheck thingatpt+ expand-region mustache-mode restclient ace-window railscasts-theme flx-ido ag yasnippet rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
  '(paradox-automatically-star t)
  '(projectile-global-mode t)
  '(tool-bar-mode nil))
@@ -132,6 +132,15 @@
   :pin melpa
   :config (custom-set-variables '(coffee-tab-width 2))
   )
+;; generating sourcemap by '-m' option. And you must set '--no-header' option
+(setq coffee-args-compile '("-c" "--no-header" "-m"))
+(add-hook 'coffee-after-compile-hook 'sourcemap-goto-corresponding-point)
+
+;; If you want to remove sourcemap file after jumping corresponding point
+(defun my/coffee-after-compile-hook (props)
+  (sourcemap-goto-corresponding-point props)
+  (delete-file (plist-get props :sourcemap)))
+(add-hook 'coffee-after-compile-hook 'my/coffee-after-compile-hook)
 
 ;; set up yasnippets
 (use-package rvm
@@ -162,9 +171,23 @@
 (setq paradox-github-token "06d54f23fdfcda346251c9fb692a9881d1f77586")
 
 (global-set-key (kbd "C-`") 'evil-mode)
+
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
 (evil-leader/set-key-for-mode 'ruby-mode
-                              "v" 'rspec-verify
-                              "a" 'rspec-verify-all
-                              "f" 'rspec-run-last-failed)
+                              "rf" 'rspec-verify
+                              "ra" 'rspec-verify-all
+                              "rf" 'rspec-run-last-failed
+                              "rs" 'rspec-verify-single)
+
+(evil-leader/set-key
+  "pf" 'projectile-find-file
+  "pg" 'projectile-ag
+  "hs" 'split-window-vertically
+  "vs" 'split-window-horizontally
+  "zc" 'hs-hide-block
+  "zo" 'hs-show-block
+  "zlc" 'hs-hide-level
+  "zlo" 'hs-show-all)
+
+(pdf-tools-install)
