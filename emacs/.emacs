@@ -58,7 +58,7 @@
  '(magit-pull-arguments (quote ("--rebase")))
  '(package-selected-packages
    (quote
-    (rust-mode zone-sl writegood-mode writeroom-mode yaml-mode sourcemap coffee-mode flymake-coffee haml-mode pdf-tools paradox ace-jump-mode rainbow-blocks rainbow-delimiters zone-rainbow evil-leader highlight-blocks projectile-rails evil csv-mode rubocop flycheck thingatpt+ expand-region mustache-mode restclient ace-window railscasts-theme flx-ido ag yasnippet rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
+    (ace-jump-buffer rust-mode zone-sl writegood-mode writeroom-mode yaml-mode sourcemap coffee-mode flymake-coffee haml-mode pdf-tools paradox ace-jump-mode rainbow-blocks rainbow-delimiters zone-rainbow evil-leader highlight-blocks projectile-rails evil csv-mode rubocop flycheck thingatpt+ expand-region mustache-mode restclient ace-window railscasts-theme flx-ido ag yasnippet rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
  '(paradox-automatically-star t)
  '(projectile-global-mode t)
  '(tool-bar-mode nil))
@@ -142,7 +142,7 @@
 (add-hook 'coffee-after-compile-hook 'my/coffee-after-compile-hook)
 
 ;; set up yasnippets
-(use-package rvm
+(use-package yasnippet
   :ensure t
   :pin melpa)
 (require 'yasnippet)
@@ -164,10 +164,16 @@
     (global-set-key (kbd "C-x o") 'ace-window)
   :diminish ace-window-mode)
 
+(use-package expand-region
+  :ensure t
+  :pin melpa)
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 (setq paradox-github-token "06d54f23fdfcda346251c9fb692a9881d1f77586")
+
+(use-package evil  :ensure t  :pin melpa)
+(use-package evil-leader :ensure t  :pin melpa)
 
 (global-set-key (kbd "C-`") 'evil-mode)
 
