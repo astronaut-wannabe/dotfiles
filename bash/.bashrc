@@ -1,3 +1,12 @@
+export PATH=/usr/local/bin:$PATH
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
+
 export ANDROID_HOME=/opt/android-sdk-linux/
 export GRADLE_HOME=/opt/gradle-2.2/
 export PATH=$GRADLE_HOME/bin/:$PATH
@@ -118,3 +127,5 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+eval "$(rbenv init -)"
