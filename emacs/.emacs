@@ -114,9 +114,6 @@
     (horizontal-scroll-bar-mode -1))
   (scroll-bar-mode -1))
 
-(require 'spaceline-config)
-(spaceline-emacs-theme)
-
 ;; Programming Languages...
 
 (if (file-exists-p "~/.init-ruby.el")
