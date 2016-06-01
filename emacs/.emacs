@@ -1,3 +1,22 @@
+(require 'package)
+
+(setq package-archives '(
+                         ("org"              . "http://orgmode.org/elpa/")
+                         ("gnu"             . "http://elpa.gnu.org/packages/")
+                         ("melpa"         . "http://melpa.milkbox.net/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
+
+;; This must come before configurations installed packages.
+(package-refresh-contents)
+
 ;; get rid of welcome message
 (setq inhibit-startup-message t)
 
@@ -14,23 +33,6 @@
 
 ;; Extra packages not available via the package manager go here
 (add-to-list 'load-path (mb/emacs-subdirectory "elisp"))
-
-;; set up the package manager repos
-(require 'package)
-(setq package-archives '(("gnu"       . "https://elpa.gnu.org/packages/")
-                         ("melpa"     . "https://melpa.org/packages/")))
-;; (add-to-list 'package-archives '("org"       . "http://orgmode.org/elpa/")             t)
-;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
-
-;; This must come before configurations installed packages.
-(package-initialize)
-(package-refresh-contents)
-
-;; Bootstrap `use-package'
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(require 'use-package)
 
 ;; default to better frame titles
 (setq frame-title-format
