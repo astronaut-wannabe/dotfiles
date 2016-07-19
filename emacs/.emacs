@@ -1,10 +1,10 @@
 (require 'package)
 
 (setq package-archives '(
-                         ("org"              . "http://orgmode.org/elpa/")
+                         ;; ("org"              . "http://orgmode.org/elpa/") 
                          ("gnu"             . "http://elpa.gnu.org/packages/")
-                         ("melpa"         . "http://melpa.milkbox.net/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+                         ("melpa"         . "http://melpa.milkbox.net/packages/")))
+                         ;;("marmalade" . "http://marmalade-repo.org/packages/")))
 
 (package-initialize)
 
@@ -12,7 +12,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
 
 ;; This must come before configurations installed packages.
 (package-refresh-contents)
@@ -53,21 +54,17 @@
  '(custom-safe-themes
    (quote
     ("3b0a350918ee819dca209cec62d867678d7dac74f6195f5e3799aa206358a983" default)))
+ '(explicit-shell-file-name "/usr/local/bin/bash")
  '(global-auto-revert-mode t)
  '(js-indent-level 2)
  '(magit-pull-arguments (quote ("--rebase")))
  '(package-selected-packages
    (quote
-    (ace-jump-buffer rust-mode zone-sl writegood-mode writeroom-mode yaml-mode sourcemap coffee-mode flymake-coffee haml-mode pdf-tools paradox ace-jump-mode rainbow-blocks rainbow-delimiters zone-rainbow evil-leader highlight-blocks projectile-rails evil csv-mode rubocop flycheck thingatpt+ expand-region mustache-mode restclient ace-window railscasts-theme flx-ido ag yasnippet rspec-mode company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat projectile org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
+    (pdf-tools rspec-mode markdown-preview-eww twittering-mode ox-jira rails-log-mode flymake-haml projectile ace-jump-buffer rust-mode zone-sl writegood-mode writeroom-mode yaml-mode sourcemap coffee-mode flymake-coffee haml-mode paradox ace-jump-mode rainbow-blocks rainbow-delimiters zone-rainbow evil-leader highlight-blocks projectile-rails evil csv-mode rubocop flycheck thingatpt+ expand-region mustache-mode restclient ace-window railscasts-theme flx-ido ag yasnippet company-inf-ruby ruby-block ruby-end bundler company company-quickhelp spaceline fancy-narrow ruby-tools inf-ruby rvm json-mode json-reformat org-beautify-theme org-bullets gh-md markdown-mode markdown-mode+ magit)))
  '(paradox-automatically-star t)
  '(projectile-global-mode t)
+ '(rspec-use-spring-when-possible nil)
  '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#181a26" :foreground "gray80" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 180 :width normal :foundry "nil" :family "Hack")))))
 
 ;; set lisp to use with slime
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
@@ -136,10 +133,10 @@
 (add-hook 'coffee-after-compile-hook 'sourcemap-goto-corresponding-point)
 
 ;; If you want to remove sourcemap file after jumping corresponding point
-(defun my/coffee-after-compile-hook (props)
-  (sourcemap-goto-corresponding-point props)
-  (delete-file (plist-get props :sourcemap)))
-(add-hook 'coffee-after-compile-hook 'my/coffee-after-compile-hook)
+;; (defun my/coffee-after-compile-hook (props)
+;;   (sourcemap-goto-corresponding-point props)
+;;   (delete-file (plist-get props :sourcemap)))
+;; (add-hook 'coffee-after-compile-hook 'my/coffee-after-compile-hook)
 
 ;; set up yasnippets
 (use-package yasnippet
@@ -154,8 +151,8 @@
   :init      (setq ag-highlight-search t))
 ;;  :config    (add-to-list 'ag-arguments "--word-regexp"))
 
-(setenv "PATH" "/Users/***REMOVED***/Library/Android/sdk/platform-tools/:node_modules/.bin:/Users/***REMOVED***/.nvm/versions/node/v4.2.2/bin:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin")
-(setq exec-path (split-string "/Users/***REMOVED***/Library/Android/sdk/platform-tools/:node_modules/.bin:/Users/***REMOVED***/.nvm/versions/node/v4.2.2/bin:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" path-separator))
+(setenv "PATH"  "/Users/***REMOVED***/.nvm/versions/node/v4.4.6/bin:/Users/***REMOVED***/.rbenv/shims:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:/opt/gradle-2.2/bin:/usr/local/bin:/Users/***REMOVED***/.rbenv/shims:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:/opt/gradle-2.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin")
+(setq exec-path (split-string "/Users/***REMOVED***/.nvm/versions/node/v4.4.6/bin:/Users/***REMOVED***/.rbenv/shims:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:/opt/gradle-2.2/bin:/usr/local/bin:/Users/***REMOVED***/.rbenv/shims:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:/opt/gradle-2.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" path-separator))
 
 (use-package ace-window
   :ensure t
@@ -196,3 +193,9 @@
   "zlo" 'hs-show-all)
 
 (pdf-tools-install)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
