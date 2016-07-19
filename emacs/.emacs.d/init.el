@@ -1,5 +1,11 @@
 (setq inhibit-startup-message t)
+(setq initial-scratch-message "")
 (tool-bar-mode -1)
+
+;; spaces, not tabs
+(setq-default indent-tabs-mode nil)
+(setq tab-width 2)
+(setq-default tab-always-indent 'complete)
 
 (require 'package)
 (setq package-enable-at-startup nil)
