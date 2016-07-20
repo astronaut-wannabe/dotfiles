@@ -9,14 +9,11 @@
 
 (require 'package)
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
-
-;; (setq package-archives '(
-;;                          ;; ("org"              . "http://orgmode.org/elpa/") 
-;;                          ("gnu"             . "http://elpa.gnu.org/packages/")
-;;                          ("melpa"         . "http://melpa.milkbox.net/packages/")))
-;;                          ;;("marmalade" . "http://marmalade-repo.org/packages/")))
+(setq package-archives '(
+                         ;; ("org"              . "http://orgmode.org/elpa/") 
+                         ("gnu"             . "http://elpa.gnu.org/packages/")
+                         ("melpa"         . "http://melpa.milkbox.net/packages/")))
+                         ;;("marmalade" . "http://marmalade-repo.org/packages/")))
 
 (package-initialize)
 
