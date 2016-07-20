@@ -1,0 +1,100 @@
+#+STARTIP: overview
+
+* Interface and UI tweaks
+  #+BEGIN_SRC emacs-lisp
+    (setq inhibit-startup-message t)
+    (setq initial-scratch-message "")
+    (tool-bar-mode -1)
+
+    ;; spaces, not tabs
+    (setq-default indent-tabs-mode nil)
+    (setq tab-width 2)
+    (setq-default tab-always-indent 'complete)
+
+    ;; just have to type 'y' instead of 'yes'
+    (fset 'yes-or-no-p 'y-or-n-p)
+
+    ;; hit f5 to reload buffer from file
+    (global-set-key (kbd "<f5>") 'revert-buffer)
+
+    ;; alias list-buffers to more useful mode
+    ;; (defalias 'list-buffers 'ibuffer)
+    (defalias 'list-buffers 'ibuffer-other-window)
+  #+END_SRC
+
+* Custom directory setup
+  Set up some special directories to hold things like snippets, custom
+  packages, etc.
+  #+BEGIN_SRC emacs-lisp
+    ;; In case this is the first time running this on a computer, we need to make sure the following directories have been created.
+    (defconst mb/emacs-directory (concat (getenv "HOME") "/.emacs.d/"))
+    (defun mb/emacs-subdirectory (d) (expand-file-name d mb/emacs-directory))
+
+    (let* ((subdirs '("elisp" "backups" "snippets" "ac-dict"))
+           (fulldirs (mapcar (lambda (d) (mb/emacs-subdirectory d)) subdirs)))
+      (dolist (dir fulldirs)
+        (when (not (file-exists-p dir))
+          (message "Make directory: %s" dir)
+          (make-directory dir))))
+
+    ;; Extra packages not available via the package manager go here
+    (add-to-list 'load-path (mb/emacs-subdirectory "elisp"))
+
+    ;; save all auto-backups in a single directory
+    (setq backup-directory-alist
+          `(("." . ,(expand-file-name
+                     (mb/emacs-subdirectory "backups")))))
+  #+END_SRC
+
+* Autocomplete
+  I like company-mode for autocomplete (over the
+  autocomplete.el). This config block makes sure I use the melpa
+  version, removes the minor-mode label from the mode-line, and turns
+  on autocomplete everywhere.
+  #+BEGIN_SRC emacs-lisp
+    (use-package company
+      :pin melpa
+      :ensure t
+      :diminish company-mode
+      :config
+      (global-company-mode 1))
+  #+END_SRC
+
+* Buffer Navigation
+  For jumping between open buffers I really like ace-window. I gave
+  avy a try, but I go faster with ace window since I can memorize the
+  jump key. The config removes the minor mode from the mode line, sets
+  the jump keys to letters instead of numbers (the default), and makes
+  the jump key prompt big and red.
+  #+BEGIN_SRC emacs-lisp
+    (use-package ace-window
+      :ensure t
+      :diminish ace-window-mode
+      :init
+      (setq aw-keys '(?a ?s ?d ?f ?j ?k ?l ?o))
+      (global-set-key (kbd "C-x o") 'ace-window)
+      (custom-set-faces '(aw-leading-char-face ((t (:foreground "red" :height 3.0))))))
+  #+END_SRC
+* Fuzzy Matching for prompts/commands
+  I tried Helm once, but was overwhelmed. Ido works great especially
+  with flx added.
+  #+BEGIN_SRC emacs-lisp
+    ;; better fuzzy matching for ido via flx
+    (use-package flx-ido :ensure t)
+    ;; set up ido for fuzzy auto-complete of everything (buffers, commands, etc.)
+    (setq ido-enable-flex-matching t)
+    (setq ido-use-faces nil)
+    (ido-mode 1)
+    (flx-ido-mode 1)
+    (ido-everywhere 1)
+  #+END_SRC
+* Out-of-the-box packages
+  These are packages that I want to make sure are installed, but are
+  basically 1-liners since the defaults are spot-on.
+  #+BEGIN_SRC emacs-lisp
+    ;; magit for git
+    (use-package magit :ensure t)
+
+    ;; try packages out before installing them
+    (use-package try :ensure t)
+  #+END_SRC
