@@ -58,13 +58,14 @@
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-;; set up ido for fuzzy auto-complete of everything (buffers, commands, etc.)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
-
 ;; better fuzzy matching for ido via flx
 (use-package flx-ido :ensure t)
+;; set up ido for fuzzy auto-complete of everything (buffers, commands, etc.)
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
+(ido-mode 1)
+(flx-ido-mode 1)
+(ido-everywhere 1)
 
 ;; alias list-buffers to more useful mode
 ;; (defalias 'list-buffers 'ibuffer)
