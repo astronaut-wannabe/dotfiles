@@ -63,6 +63,9 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 
+;; better fuzzy matching for ido via flx
+(use-package flx-ido :ensure t)
+
 ;; alias list-buffers to more useful mode
 ;; (defalias 'list-buffers 'ibuffer)
 (defalias 'list-buffers 'ibuffer-other-window)
