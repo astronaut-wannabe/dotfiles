@@ -57,6 +57,8 @@
   (global-set-key (kbd "C-x o") 'ace-window)
   (custom-set-faces '(aw-leading-char-face ((t (:foreground "red" :height 3.0))))))
 
+(use-package magit :ensure t)
+
 ;; auto-generated stuff
 ;;
 (custom-set-variables
