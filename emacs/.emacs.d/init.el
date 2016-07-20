@@ -82,6 +82,14 @@
 
 (use-package magit :ensure t)
 
+;; set up auto-complete via company-mode
+(use-package company
+  :pin melpa
+  :ensure t
+  :diminish company-mode
+  :config
+  (global-company-mode 1))
+
 ;; auto-generated stuff
 ;;
 (custom-set-variables
@@ -93,7 +101,7 @@
  '(custom-safe-themes
    (quote
     ("3b0a350918ee819dca209cec62d867678d7dac74f6195f5e3799aa206358a983" default)))
- '(package-selected-packages (quote (lorem-ipsum))))
+ '(package-selected-packages (quote (company lorem-ipsum))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
