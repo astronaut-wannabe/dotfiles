@@ -22,6 +22,25 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; In case this is the first time running this on a computer, we need to make sure the following directories have been created.
+(defconst mb/emacs-directory (concat (getenv "HOME") "/.emacs.d/"))
+(defun mb/emacs-subdirectory (d) (expand-file-name d mb/emacs-directory))
+
+(let* ((subdirs '("elisp" "backups" "snippets" "ac-dict"))
+       (fulldirs (mapcar (lambda (d) (mb/emacs-subdirectory d)) subdirs)))
+  (dolist (dir fulldirs)
+    (when (not (file-exists-p dir))
+      (message "Make directory: %s" dir)
+      (make-directory dir))))
+
+;; Extra packages not available via the package manager go here
+(add-to-list 'load-path (mb/emacs-subdirectory "elisp"))
+
+;; save all auto-backups in a single directory
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (mb/emacs-subdirectory "backups")))))
+
 ;; try packages out before installing them
 (use-package try
   :ensure t)
