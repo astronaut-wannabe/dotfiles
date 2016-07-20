@@ -75,6 +75,13 @@
       (global-set-key (kbd "C-x o") 'ace-window)
       (custom-set-faces '(aw-leading-char-face ((t (:foreground "red" :height 3.0))))))
   #+END_SRC
+* Org Tweaks
+  #+BEGIN_SRC emacs-lisp
+    (use-package org-bullets
+      :ensure t
+      :config
+      (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  #+END_SRC
 * Fuzzy Matching for prompts/commands
   I tried Helm once, but was overwhelmed. Ido works great especially
   with flx added.
@@ -97,4 +104,8 @@
 
     ;; try packages out before installing them
     (use-package try :ensure t)
+
+    ;; open a help menu if you pause in the middle
+    ;; of a command sequence
+    (use-package which-key :ensure t :config (which-key-mode))
   #+END_SRC

@@ -15,19 +15,6 @@
 
 (org-babel-load-file (expand-file-name "~/.emacs.d/emacs.org"))
 
-;; open a help menu if you pause in the middle
-;; of a command sequence
-(use-package which-key
-  :ensure t
-  :config
-  (which-key-mode))
-
-;; org-mode stuff
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
 ;; auto-generated stuff
 ;;
 (custom-set-variables
