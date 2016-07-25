@@ -125,5 +125,19 @@
     ;; of a command sequence
     (use-package which-key :ensure t :config (which-key-mode))
   #+END_SRC
-* Programming kanguages
+
+* Programming languages
 ** Ruby and Rails
+   #+BEGIN_SRC emacs-lisp
+     ;; an irb terminal solution for emacs
+     (use-package inf-ruby
+       :ensure t
+       :pin melpa
+       :config (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode))
+
+     ;; add a mode for running specs
+     (use-package rspec-mode
+       :ensure t
+       :config (setq rspec-use-spring-when-possible nil))
+   #+END_SRC
+
