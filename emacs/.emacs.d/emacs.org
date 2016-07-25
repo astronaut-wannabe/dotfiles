@@ -75,6 +75,7 @@
       (global-set-key (kbd "C-x o") 'ace-window)
       (custom-set-faces '(aw-leading-char-face ((t (:foreground "red" :height 3.0))))))
   #+END_SRC
+
 * Org Tweaks
   #+BEGIN_SRC emacs-lisp
     (use-package org-bullets
@@ -82,6 +83,7 @@
       :config
       (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
   #+END_SRC
+
 * Fuzzy Matching for prompts/commands
   I tried Helm once, but was overwhelmed. Ido works great especially
   with flx added.
@@ -95,6 +97,17 @@
     (flx-ido-mode 1)
     (ido-everywhere 1)
   #+END_SRC
+
+* Spell checking (ispell/aspell)
+  I like to use aspell instead of ispell. Also, changing the
+  dictionary to "American" (vs English) seems to result in better
+  suggestions for me.
+  #+BEGIN_SRC emacs-lisp
+    (setq ispell-dictionary "american")
+    (setq ispell-program-name "/usr/local/bin/aspell")
+    (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
+  #+END_SRC
+
 * Out-of-the-box packages
   These are packages that I want to make sure are installed, but are
   basically 1-liners since the defaults are spot-on.
@@ -112,3 +125,5 @@
     ;; of a command sequence
     (use-package which-key :ensure t :config (which-key-mode))
   #+END_SRC
+* Programming kanguages
+** Ruby and Rails
