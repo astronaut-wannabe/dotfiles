@@ -102,6 +102,9 @@
     ;; magit for git
     (use-package magit :ensure t)
 
+    ;; Projectile for navigating project repos
+    (use-package projectile :ensure t :config (projectile-global-mode t))
+
     ;; try packages out before installing them
     (use-package try :ensure t)
 
