@@ -129,6 +129,10 @@
 * Programming languages
 ** Ruby and Rails
    #+BEGIN_SRC emacs-lisp
+     ;; I use rbenv to manage ruby versions, so this package is needed to
+     ;; make sure paths are set up properly
+     (use-package rbenv :ensure t :config (global-rbenv-mode 1))
+
      ;; an irb terminal solution for emacs
      (use-package inf-ruby
        :ensure t
@@ -138,6 +142,18 @@
      ;; add a mode for running specs
      (use-package rspec-mode
        :ensure t
-       :config (setq rspec-use-spring-when-possible nil))
-   #+END_SRC
+       :config
+       (setq rspec-use-spring-when-possible nil)
+       ;; needed for pry/byebug (requires inf-ruby)
+       (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+       ;; causes the rpsec output to auto-scroll
+       (setq compilation-scroll-output t))
 
+     (defadvice rspec-compile (around rspec-compile-around)
+       "Use BASH shell for running the specs because of ZSH issues."
+       (let ((shell-file-name "/bin/bash"))
+         ad-do-it))
+
+     (ad-activate 'rspec-compile)
+
+   #+END_SRC
