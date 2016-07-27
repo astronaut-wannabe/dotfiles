@@ -20,6 +20,15 @@
     ;; alias list-buffers to more useful mode
     ;; (defalias 'list-buffers 'ibuffer)
     (defalias 'list-buffers 'ibuffer-other-window)
+
+    (use-package expand-region
+      :ensure t
+      :pin melpa
+      :config
+      (global-set-key (kbd "C-=") 'er/expand-region))
+
+    ;; frame title like: "[buffer-name] - Emacs 25.1.50.1"
+    (setq frame-title-format '("" "[%b] - Emacs " emacs-version))
   #+END_SRC
 
 * Custom directory setup
