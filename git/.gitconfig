@@ -1,11 +1,11 @@
 [user]
-	name = ***REMOVED***
-	email = ***REMOVED***@***REMOVED***.com
+	name = astronaut-wannabe
+	email = contact@astronaut-wannabe.com
 [branch]
 	autosetuprebase = always
 [push]
 	default = upstream
-[***REMOVED***]
+***REMOVED***
 	append-cr-url = true
 	pull-request-by-default = true
 [credential]
