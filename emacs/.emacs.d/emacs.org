@@ -34,6 +34,27 @@
     (global-hl-line-mode 1)
   #+END_SRC
 
+  The [[https://github.com/purcell/exec-path-from-shell][exec-path-from-shell]] package ensures environment variables
+  inside Emacs are set up the same as my shell. The [[https://github.com/purcell/exec-path-from-shell#usage][docs]] recommend
+  doing something like this:
+
+  #+BEGIN_SRC emacs-lisp :eval never :tangle no :exports none
+    (when (memq window-system '(mac ns))
+      (exec-path-from-shell-initialize))
+  #+END_SRC
+
+  This will only run the package on OSX. I think this is done to
+  prevent running on a non *nix box (windows). This isn't a concern
+  for me since I am always on my work Mac or my personal Linux, so I
+  just run:
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package exec-path-from-shell
+      :ensure t
+      :config
+      (exec-path-from-shell-initialize))
+  #+END_SRC
+
 * Custom directory setup
   Set up some special directories to hold things like snippets, custom
   packages, etc.
