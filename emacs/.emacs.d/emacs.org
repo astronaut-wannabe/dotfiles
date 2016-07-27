@@ -38,7 +38,7 @@
   inside Emacs are set up the same as my shell. The [[https://github.com/purcell/exec-path-from-shell#usage][docs]] recommend
   doing something like this:
 
-  #+BEGIN_SRC emacs-lisp :eval never :tangle no :exports none
+  #+BEGIN_SRC emacs-lisp :eval never :tangle no :exports code
     (when (memq window-system '(mac ns))
       (exec-path-from-shell-initialize))
   #+END_SRC
