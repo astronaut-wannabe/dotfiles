@@ -136,6 +136,9 @@
     ;; open a help menu if you pause in the middle
     ;; of a command sequence
     (use-package which-key :ensure t :config (which-key-mode))
+
+    ;; I often us Ag instead of grep
+    (use-package ag :ensure t :config (setq ag-highlight-search t))
   #+END_SRC
 
 * Programming languages
