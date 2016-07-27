@@ -29,6 +29,9 @@
 
     ;; frame title like: "[buffer-name] - Emacs 25.1.50.1"
     (setq frame-title-format '("" "[%b] - Emacs " emacs-version))
+
+    ;; Highlight current line
+    (global-hl-line-mode 1)
   #+END_SRC
 
 * Custom directory setup
