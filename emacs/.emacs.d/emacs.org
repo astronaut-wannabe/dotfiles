@@ -141,6 +141,16 @@
     (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
   #+END_SRC
 
+* Flycheck
+  Flycheck does code checking "on the fly". It has an awesome
+  [[http://www.flycheck.org/en/latest/#the-user-guide][user_guide]] in case I ever decide to really dig into custom tweaks.
+  #+BEGIN_SRC emacs-lisp
+    (use-package flycheck
+      :ensure t
+      :init
+      (global-flycheck-mode t))
+  #+END_SRC
+
 * Out-of-the-box packages
   These are packages that I want to make sure are installed, but are
   basically 1-liners since the defaults are spot-on.
