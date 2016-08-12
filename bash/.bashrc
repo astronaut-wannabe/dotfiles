@@ -129,3 +129,5 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 eval "$(rbenv init -)"
+
+alias dbr='bundle exec rake db:drop db:create db:migrate db:test:prepare'
