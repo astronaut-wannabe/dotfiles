@@ -203,3 +203,16 @@
      (ad-activate 'rspec-compile)
 
    #+END_SRC
+   
+   For `hs-minor-mode` I need to add new ruby block delimiters to get
+   folding to work in Ruby classes and spec files.
+   #+BEGIN_SRC emacs-lisp
+     (eval-after-load "hideshow"
+       '(add-to-list 'hs-special-modes-alist
+                     `(ruby-mode
+                       ,(rx (or "def" "class" "module" "do" "{" "[")) ; Block start
+                       ,(rx (or "}" "]" "end"))                  ; Block end
+                       ,(rx (or "#" "=begin"))                   ; Comment start
+                       ruby-forward-sexp nil)))
+   #+END_SRC
+
