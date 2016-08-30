@@ -55,6 +55,12 @@
       (exec-path-from-shell-initialize))
   #+END_SRC
 
+* enable "advanced" commands
+  Sometimes I run into a command that Emacs has disabled by
+  default. Here I enable some of the ones I actually use.
+  #+BEGIN_SRC emacs-lisp
+    (put 'narrow-to-region 'disabled nil)
+  #+END_SRC
 * Custom directory setup
   Set up some special directories to hold things like snippets, custom
   packages, etc.
