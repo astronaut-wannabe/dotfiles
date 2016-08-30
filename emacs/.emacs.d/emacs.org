@@ -215,4 +215,21 @@
                        ,(rx (or "#" "=begin"))                   ; Comment start
                        ruby-forward-sexp nil)))
    #+END_SRC
+** Coffeescript
+   #+BEGIN_SRC emacs-lisp
+     (use-package coffee-mode
+       :ensure t
+       :pin melpa
+       :config (custom-set-variables '(coffee-tab-width 2)))
+
+     ;; generating sourcemap by '-m' option. And you must set '--no-header' option
+     (setq coffee-args-compile '("-c" "--no-header" "-m"))
+     (add-hook 'coffee-after-compile-hook 'sourcemap-goto-corresponding-point)
+
+     ;; If you want to remove sourcemap file after jumping corresponding point
+     ;; (defun my/coffee-after-compile-hook (props)
+     ;;   (sourcemap-goto-corresponding-point props)
+     ;;   (delete-file (plist-get props :sourcemap)))
+     ;; (add-hook 'coffee-after-compile-hook 'my/coffee-after-compile-hook)
+   #+END_SRC
 
