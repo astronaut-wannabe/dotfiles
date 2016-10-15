@@ -32,6 +32,11 @@
 
     ;; Highlight current line
     (global-hl-line-mode 1)
+
+    ;; Swap the two comment commands so that it is easier to use the
+    ;; one I always use
+    (global-set-key (kbd "M-;") 'comment-line)
+    (global-set-key (kbd "C-x C-;") 'comment-dwim)
   #+END_SRC
 
   The [[https://github.com/purcell/exec-path-from-shell][exec-path-from-shell]] package ensures environment variables
