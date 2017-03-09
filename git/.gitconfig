@@ -30,3 +30,5 @@
 	editor = emacs -nw
 	pager = less -FMRiX
 	
+[gpg]
+	program = gpg
