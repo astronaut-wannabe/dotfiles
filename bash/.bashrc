@@ -7,17 +7,24 @@ fi
 export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix nvm)/nvm.sh"
 
-export ANDROID_HOME=/opt/android-sdk-linux/
-export GRADLE_HOME=/opt/gradle-2.2/
-export PATH=$GRADLE_HOME/bin/:$PATH
-export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
-export JAVA_HOME=/usr/lib/jvm/java-7-oracle/
+# export ANDROID_HOME=/opt/android-sdk-linux/
+export ANDROID_HOME=~/Library/Android/sdk
+# export GRADLE_HOME=/opt/gradle-2.2/
+# export PATH=$GRADLE_HOME/bin/:$PATH
+# export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+# export JAVA_HOME=/usr/lib/jvm/java-7-oracle/
+export JAVA_HOME=/Library/Java/Home
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/gnu-tar/libexec/gnuman:$MANPATH"
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 
+export GPG_TTY=$(tty)
 
 source ~/.git-completion.bash
 export PS1='\e[0;32m\h:\u \e[0;33m\w \e[0;36m$(__git_ps1 "(%s)") \e[0m\n$ '
 alias logcat='adb logcat'
 alias emacs='emacs -nw'
+alias ctag_rails_project='ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)'
 alias count_dexed_methods='/opt/android-sdk-linux/build-tools/21.0.1/dexdump -f classes.dex | head -n 25 | grep method_ids_size'
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
@@ -130,4 +137,23 @@ fi
 
 eval "$(rbenv init -)"
 
-alias dbr='bundle exec rake db:drop db:create db:migrate db:test:prepare'
+alias dbr='bundle exec rake db:truncate db:drop db:schema:cache:clear db:setup db:migrate'
+alias sa="ssh-agent bash && ssh-add -K"
+
+
+# usage: smartresize img.jpg 300 output-dir/
+smartresize() {
+   mogrify -path $3 -filter Triangle -define filter:support=2 -thumbnail $2 -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB $1
+}
+
+# usage: cwc-do-it input.jpg 300 output-name
+cwc-do-it() {
+  mkdir -p done/
+  mkdir -p out/
+  smartresize $1 $2 out/ && mv out/$1 done/$3.jpg
+}
+
+# usage: cwc-do-all input.jpg image-name
+cwc-do-all() {
+  cwc-do-it $1 320 $2-phonesmall && cwc-do-it $1 640 $2-phonesmall@2x && cwc-do-it $1 480 $2-phone && cwc-do-it $1 1080 $2-phone@2x && cwc-do-it $1 800 $2-tablet && cwc-do-it $1 1536 $2-tablet@2x && cwc-do-it $1 835 $2-small && cwc-do-it $1 1670 $2-small@2x &&  cwc-do-it $1 1280 $2-large && cwc-do-it $1 2000 $2-large@2x
+}
