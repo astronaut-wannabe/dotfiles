@@ -146,8 +146,23 @@
       :config
       (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
       (setq org-image-actual-width (/ (display-pixel-width) 3)))
-  #+END_SRC
 
+    (setq org-export-backends (quote (
+                                      beamer
+                                      html
+                                      latex
+                                      md
+                                      deck
+                                      s5
+                                      present
+                                      tree-slide
+                                      html5slide
+                                      impress-js
+                                      ioslide
+                                      jira
+                                      reveal
+                                      tufte)))
+  #+END_SRC
 * Fuzzy Matching for prompts/commands
   I tried Helm once, but was overwhelmed. Ido works great especially
   with flx added.
@@ -182,15 +197,22 @@
       (global-flycheck-mode t))
   #+END_SRC
 
+* Projectile
+  Projectile for navigating project repos
+  #+BEGIN_SRC emacs-lisp
+    (use-package projectile
+      :ensure t
+      :config
+      (projectile-mode t)
+      (setq projectile-switch-project-action #'projectile-commander))
+  #+END_SRC
+
 * Out-of-the-box packages
   These are packages that I want to make sure are installed, but are
   basically 1-liners since the defaults are spot-on.
   #+BEGIN_SRC emacs-lisp
     ;; magit for git
     (use-package magit :ensure t)
-
-    ;; Projectile for navigating project repos
-    (use-package projectile :ensure t :config (projectile-global-mode t))
 
     ;; try packages out before installing them
     (use-package try :ensure t)
@@ -215,6 +237,24 @@
        :ensure t
        :pin melpa
        :config (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode))
+
+
+     ;; Skip ENV prompt that shows up in some cases.
+     (setq inf-ruby-console-environment "development")
+
+     (defun mb/run-ruby ()
+       (interactive)
+       (require 'inf-ruby)
+       (let ((default-directory (projectile-project-root))
+             (was-running (get-buffer-process inf-ruby-buffer)))
+         ;; This function automatically decides between starting
+         ;; a new console or visiting an existing one.
+         (inf-ruby-console-auto)
+         (when (and (not was-running)
+                    (get-buffer-process (current-buffer))))))
+
+     (define-key ruby-mode-map (kbd "C-c M-j")
+       #'mb/run-ruby)
 
      ;; add a mode for running specs
      (use-package rspec-mode

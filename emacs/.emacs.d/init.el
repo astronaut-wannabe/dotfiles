@@ -1,8 +1,8 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/")
-             '("org"   . "http://orgmode.org/elpa/"))
+             '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
 ;; Bootstrap 'use-package'
@@ -13,5 +13,6 @@
 ;; move all the auto-generated stuff to a separate file
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
+
 
 (org-babel-load-file (expand-file-name "~/.emacs.d/emacs.org"))
