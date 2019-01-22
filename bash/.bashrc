@@ -1,35 +1,16 @@
+source ~/.git-completion.bash
+
 export PATH=/usr/local/bin:$PATH
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
-
-# export ANDROID_HOME=/opt/android-sdk-linux/
-export ANDROID_HOME=~/Library/Android/sdk
-# export GRADLE_HOME=/opt/gradle-2.2/
-# export PATH=$GRADLE_HOME/bin/:$PATH
-# export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
-# export JAVA_HOME=/usr/lib/jvm/java-7-oracle/
-export JAVA_HOME=/Library/Java/Home
-export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/gnu-tar/libexec/gnuman:$MANPATH"
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
-
 export GPG_TTY=$(tty)
 
-source ~/.git-completion.bash
-export PS1='\e[0;32m\h:\u \e[0;33m\w \e[0;36m$(__git_ps1 "(%s)") \e[0m\n$ '
-alias logcat='adb logcat'
 alias emacs='emacs -nw'
-alias ctag_rails_project='ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)'
-alias count_dexed_methods='/opt/android-sdk-linux/build-tools/21.0.1/dexdump -f classes.dex | head -n 25 | grep method_ids_size'
-
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+alias ctag_rails_project='ctags -R -e --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)'
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -49,10 +30,6 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -69,7 +46,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -157,3 +134,6 @@ cwc-do-it() {
 cwc-do-all() {
   cwc-do-it $1 320 $2-phonesmall && cwc-do-it $1 640 $2-phonesmall@2x && cwc-do-it $1 480 $2-phone && cwc-do-it $1 1080 $2-phone@2x && cwc-do-it $1 800 $2-tablet && cwc-do-it $1 1536 $2-tablet@2x && cwc-do-it $1 835 $2-small && cwc-do-it $1 1670 $2-small@2x &&  cwc-do-it $1 1280 $2-large && cwc-do-it $1 2000 $2-large@2x
 }
+
+
+eval "$(rbenv init -)"
