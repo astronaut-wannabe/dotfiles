@@ -153,6 +153,7 @@
                                       latex
                                       md
                                       deck
+                                      scheme
                                       s5
                                       present
                                       tree-slide
@@ -287,6 +288,18 @@
                        ,(rx (or "}" "]" "end"))                  ; Block end
                        ,(rx (or "#" "=begin"))                   ; Comment start
                        ruby-forward-sexp nil)))
+   #+END_SRC
+** Scheme
+   #+BEGIN_SRC emacs-lisp
+     ;; add a mode for running specs
+     (use-package geiser
+       :ensure t)
+
+     ;; Setup geiser and babel
+     (require 'scheme)
+     (setq geiser-active-implementations '(mit))
+     (custom-set-variables
+      '(scheme-program-name "mit-scheme"))
    #+END_SRC
 ** Coffeescript
    #+BEGIN_SRC emacs-lisp
