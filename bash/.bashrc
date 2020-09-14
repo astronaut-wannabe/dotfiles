@@ -2,11 +2,10 @@ source ~/.git-completion.bash
 
 export PATH=/usr/local/bin:$PATH
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
+# rbenv stuff
+export PATH=/home/mbecker/.rbenv/bin:$PATH
+eval "$(rbenv init -)"
 
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 export GPG_TTY=$(tty)
 
 alias emacs='emacs -nw'
@@ -112,8 +111,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-eval "$(rbenv init -)"
-
 alias dbr='bundle exec rake db:truncate db:drop db:schema:cache:clear db:setup db:migrate'
 alias sa="ssh-agent bash && ssh-add -K"
 
@@ -136,4 +133,6 @@ cwc-do-all() {
 }
 
 
-eval "$(rbenv init -)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
