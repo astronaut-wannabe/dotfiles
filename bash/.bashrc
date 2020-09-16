@@ -3,7 +3,7 @@
 export PATH=/usr/local/bin:$PATH
 
 # rbenv stuff
-export PATH=/home/mbecker/.rbenv/bin:$PATH
+export PATH=/home/paranoid/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
 
 export GPG_TTY=$(tty)
